@@ -1,7 +1,19 @@
 .card-todo {
     margin-top: 50px;
+    width: 500px;
+    margin: auto;
 
     .complete {
         text-decoration-line: line-through;
+    }
+
+    .item-todo {
+        text-align: left;
+        margin-left: 20px;
+
+        label {
+            font-size: 18px;
+            margin-left: 10px;
+        }
     }
 }
