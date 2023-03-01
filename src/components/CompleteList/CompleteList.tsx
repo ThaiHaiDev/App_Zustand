@@ -17,6 +17,15 @@ const CompleteList = () => {
   const dragDropped = (e: any) => {
     e.stopPropagation();
     updateTodo(e.dataTransfer.getData("todoTransfer"));
+    document.querySelector(".listcomplete")?.classList.remove("over");
+  };
+
+  const dragEnter = (e: any) => {
+    document.querySelector(".listcomplete")?.classList.add("over");
+  };
+
+  const dragLeave = (e: any) => {
+    document.querySelector(".listcomplete")?.classList.remove("over");
   };
 
   return (
@@ -24,16 +33,19 @@ const CompleteList = () => {
       onDragOver={(e) => onDragingOver(e)}
       className="card-complete"
       onDrop={(e) => dragDropped(e)}
+      onDragEnter={(e) => dragEnter(e)}
+      onDragLeave={(e) => dragLeave(e)}
     >
       <h5 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 mb-5 text-lg">
         Complete
       </h5>
-      {dataTodosFilter?.map((todo: any, index: number) => (
-        <div className="item-todo" key={index}>
-
-          <label>{todo.content}</label>
-        </div>
-      ))}
+      <div className="listcomplete">
+        {dataTodosFilter?.map((todo: any, index: number) => (
+          <div className="item-todo" key={index}>
+            <label>{todo.content}</label>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
