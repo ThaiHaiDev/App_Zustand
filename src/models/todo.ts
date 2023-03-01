@@ -1,4 +1,7 @@
 export interface todoDataRequest {
     content: string,
-    isComplete: boolean
+    isComplete: boolean,
+    isInProgress: boolean,
+    isDoing: boolean,
+    statusTodo: string
 }

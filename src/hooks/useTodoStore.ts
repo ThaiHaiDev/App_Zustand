@@ -8,40 +8,61 @@ const useTodoStore = create(
       todos: [
         {
           content: "React",
-          isComplete: true,
+          statusTodo: "doing",
         },
         {
           content: "Node",
-          isComplete: true,
+          statusTodo: "inprogress",
         },
         {
           content: "Express",
-          isComplete: false,
+          statusTodo: "complete",
         },
       ],
       addTodo: (data: string) =>
         set((state: any) => ({
-          todos: [...state.todos, { content: data, isComplete: false }],
+          todos: [...state.todos, { content: data, statusTodo: 'doing' }],
         })),
 
       updateStatusTodo: (data: string) => {
         set((state: any) => ({
           todos: state.todos?.map((item: todoDataRequest) => {
             if (item.content === data) {
-              item.isComplete = !item.isComplete;
+              item.statusTodo = 'doing';
+            }
+            return item;
+          }),
+        }));
+      },
+
+      updateStatusInProgress: (data: string) => {
+        set((state: any) => ({
+          todos: state.todos?.map((item: todoDataRequest) => {
+            if (item.content === data) {
+              item.statusTodo = "inprogress";
+            }
+            return item;
+          }),
+        }));
+      },
+
+      updateStatusComplete: (data: string) => {
+        set((state: any) => ({
+          todos: state.todos?.map((item: todoDataRequest) => {
+            if (item.content === data) {
+              item.statusTodo = "complete";
             }
             return item;
           }),
         }));
       },
     }),
+
     {
       name: "todo-storage", // unique name
       storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
     }
   )
 );
-
-
 
 export default useTodoStore;
