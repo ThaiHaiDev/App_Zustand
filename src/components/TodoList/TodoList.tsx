@@ -13,8 +13,9 @@ const TodoList = () => {
   //   updateTodo(data);
   // }
 
-  const dragStated = (e: any, data: string) => {
+  const dragStated = (e: any, data: number) => {
     e.dataTransfer.setData("todoTransfer", data);
+    console.log(data)
   };
 
   return (
@@ -33,7 +34,7 @@ const TodoList = () => {
             className="item-todo"
             key={index}
             draggable={true}
-            onDragStart={(e) => dragStated(e, todo.content)}
+            onDragStart={(e) => dragStated(e, todo.id)}
           >
             <label>{todo.content}</label>
           </div>

@@ -16,7 +16,7 @@ const CompleteList = () => {
 
   const dragDropped = (e: any) => {
     e.stopPropagation();
-    updateTodo(e.dataTransfer.getData("todoTransfer"));
+    updateTodo(Number(e.dataTransfer.getData("todoTransfer")));
     document.querySelector(".listcomplete")?.classList.remove("over");
   };
 

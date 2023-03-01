@@ -16,18 +16,17 @@ const InProgressList = () => {
 
   const dragDropped = (e: any) => {
     e.stopPropagation();
-    updateTodo(e.dataTransfer.getData("todoTransfer"));
+    updateTodo(Number(e.dataTransfer.getData("todoTransfer")));
     document.querySelector(".listdoing")?.classList.remove("over");
   };
 
-  const dragStated = (e: any, data: string) => {
+  const dragStated = (e: any, data: number) => {
     e.dataTransfer.setData("todoTransfer", data);
     document.querySelector(".item-todo")?.classList.add("dragging");
   };
 
   const dragEnter = (e: any) => {
     document.querySelector(".listdoing")?.classList.add("over");
-    console.log("enter");
   };
 
   const dragLeave = (e: any) => {
@@ -55,7 +54,7 @@ const InProgressList = () => {
             className="item-todo"
             key={index}
             draggable={true}
-            onDragStart={(e) => dragStated(e, todo.content)}
+            onDragStart={(e) => dragStated(e, todo.id)}
           >
             <label>{todo.content}</label>
           </div>

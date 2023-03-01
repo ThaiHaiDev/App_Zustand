@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import useTodoStore from "../../hooks/useTodoStore";
 import './AddTodoForm.scss';
 
@@ -11,13 +11,17 @@ const AddTodoForm = () => {
 
   const addTodoNew = useTodoStore((state: any) => state.addTodo);
 
+  const form = useRef<any>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addTodoNew(newTodo);
+    form.current.reset();
+    setNewTodo('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} ref={form}>
       <input
         type="text"
         onChange={changeTodo}

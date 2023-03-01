@@ -7,38 +7,48 @@ const useTodoStore = create(
     (set) => ({
       todos: [
         {
+          id: 0,
           content: "React",
           statusTodo: "doing",
         },
         {
+          id: 1,
           content: "Node",
           statusTodo: "inprogress",
         },
         {
+          id: 2,
           content: "Express",
           statusTodo: "complete",
         },
       ],
       addTodo: (data: string) =>
         set((state: any) => ({
-          todos: [...state.todos, { content: data, statusTodo: 'doing' }],
+          todos: [
+            ...state.todos,
+            {
+              id: Number(state.todos.length) + 1,
+              content: data,
+              statusTodo: "doing",
+            },
+          ],
         })),
 
-      updateStatusTodo: (data: string) => {
+      updateStatusTodo: (data: number) => {
         set((state: any) => ({
           todos: state.todos?.map((item: todoDataRequest) => {
-            if (item.content === data) {
-              item.statusTodo = 'doing';
+            if (item.id === data) {
+              item.statusTodo = "doing";
             }
             return item;
           }),
         }));
       },
 
-      updateStatusInProgress: (data: string) => {
+      updateStatusInProgress: (data: number) => {
         set((state: any) => ({
           todos: state.todos?.map((item: todoDataRequest) => {
-            if (item.content === data) {
+            if (item.id === data) {
               item.statusTodo = "inprogress";
             }
             return item;
@@ -46,10 +56,10 @@ const useTodoStore = create(
         }));
       },
 
-      updateStatusComplete: (data: string) => {
+      updateStatusComplete: (data: number) => {
         set((state: any) => ({
           todos: state.todos?.map((item: todoDataRequest) => {
-            if (item.content === data) {
+            if (item.id === data) {
               item.statusTodo = "complete";
             }
             return item;
