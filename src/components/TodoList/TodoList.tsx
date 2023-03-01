@@ -20,9 +20,14 @@ const TodoList = () => {
   return (
     <>
       <div className="card-todo">
-        <h5 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 mb-5 text-lg">
+        <h5 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 mb-5 text-lg mb-2">
           Doing
         </h5>
+        <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+          <img src="https://img.icons8.com/ios/24/null/to-do.png" alt="" />
+          <p style={{ marginLeft: '10px', fontWeight: 'bold' }}>{dataTodosFilter.length}</p>
+        </div>
+
         {dataTodosFilter?.map((todo: any, index: number) => (
           <div
             className="item-todo"
@@ -30,7 +35,6 @@ const TodoList = () => {
             draggable={true}
             onDragStart={(e) => dragStated(e, todo.content)}
           >
-            
             <label>{todo.content}</label>
           </div>
         ))}

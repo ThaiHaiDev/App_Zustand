@@ -36,9 +36,13 @@ const CompleteList = () => {
       onDragEnter={(e) => dragEnter(e)}
       onDragLeave={(e) => dragLeave(e)}
     >
-      <h5 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 mb-5 text-lg">
+      <h5 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 mb-5 text-lg mb-2">
         Complete
       </h5>
+      <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+          <img src="https://img.icons8.com/external-wanicon-lineal-wanicon/24/null/external-doings-training-and-coaching-wanicon-lineal-wanicon.png" alt="" />
+          <p style={{ marginLeft: '10px', fontWeight: 'bold' }}>{dataTodosFilter.length}</p>
+        </div>
       <div className="listcomplete">
         {dataTodosFilter?.map((todo: any, index: number) => (
           <div className="item-todo" key={index}>

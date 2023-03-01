@@ -42,9 +42,13 @@ const InProgressList = () => {
       onDragEnter={(e) => dragEnter(e)}
       onDragLeave={(e) => dragLeave(e)}
     >
-      <h5 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 mb-5 text-lg">
+      <h5 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 mb-5 text-lg mb-2">
         In Progress
       </h5>
+      <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+          <img src="https://img.icons8.com/ios-filled/24/null/tasks.png" alt="" />
+          <p style={{ marginLeft: '10px', fontWeight: 'bold' }}>{dataTodosFilter.length}</p>
+        </div>
       <div className="listdoing">
         {dataTodosFilter?.map((todo: any, index: number) => (
           <div
