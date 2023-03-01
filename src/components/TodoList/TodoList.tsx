@@ -7,11 +7,11 @@ const TodoList = () => {
     return todo.statusTodo === "doing";
   });
 
-  const updateTodo = useTodoStore((state: any) => state.updateStatusTodo);
+  // const updateTodo = useTodoStore((state: any) => state.updateStatusTodo);
 
-  function handleChangeStatusTodo(data: string) {
-    updateTodo(data);
-  }
+  // function handleChangeStatusTodo(data: string) {
+  //   updateTodo(data);
+  // }
 
   const dragStated = (e: any, data: string) => {
     e.dataTransfer.setData("todoTransfer", data);
